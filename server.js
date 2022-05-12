@@ -13,5 +13,5 @@ const userRouter=require("./router/user.js")
 app.use("/v1/user",userRouter)
 const spotRouter=require("./router/spot.js")
 app.use("/v1/spot",spotRouter)
-/*const forumRouter=require("./router/forum.js")
-app.use("/v1/forum",forumRouter)*/
+const forumRouter=require("./router/forum.js")
+app.use("/v1/forum",forumRouter)

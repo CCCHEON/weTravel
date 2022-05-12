@@ -9,16 +9,14 @@ router.post("/edit",(req,res)=>{
 	const n="insert into w_spot set ?"
 	pool.query(n,[m],(err,result)=>{
 		if(err){
-			throw err
-			res.send({code:201,msg:"景点添加失败"})
+			throw err	
 			return
-		}else{
-			res.send({code:200,msg:"景点添加成功"})
-		}	
+		}
+		result.affectedRows>0 ? res.send({code:200,msg:"景点添加成功"}) : res.send({code:201,msg:"景点添加失败"})
 	})
 })
 
-//景点搜索 查询数据 params传参 //接口测试通过 //未创建论坛帖子数据表
+//景点搜索 查询数据 params传参 //接口测试通过 
 router.get("/search/:spot",(req,res)=>{
 	const m=req.params
 	const n="select spot,brief_intro,location from w_spot where spot=?"
@@ -27,10 +25,6 @@ router.get("/search/:spot",(req,res)=>{
 			throw err
 			return
 		}
-		if(result.length>0){
-			res.send(result)
-		}else{
-			res.send({code:201,msg:"查询失败"})
-		}
+		result.length>0 ? res.send({code:200,msg:`查询成功${result}`}) : res.send({code:201,msg:"查询失败"})	
 	})
 })
