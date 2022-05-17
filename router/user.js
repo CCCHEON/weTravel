@@ -6,13 +6,14 @@ module.exports=router
 //用户注册 插入数据  //接口测试通过
 router.post("/reg",(req,res)=>{
 	const m=req.body
+	console.log(m)
 	const n="insert into w_user set ?"
 	pool.query(n,[m],(err,result)=>{
 		if(err){
 			throw err
 			return
 		}
-		result.affectedRows>0 ? res.send({code:200,msg:"注册成功"}) : res.send({code:201,msg:"注册失败"})
+		result.affectedRows>0 ? res.send({code:200,msg:"插入成功"}) : res.send({code:201,msg:"插入失败"})
 	})
 })
 
@@ -30,18 +31,17 @@ router.get("/select",(req,res)=>{
 })
 
 //用户登录 查询数据  //接口测试不
-router.post("/log",(req,res)=>{
-	const uname=req.body.uname
-	const upwd=req.body.upwd
+router.get("/log",(req,res)=>{
+	const uname=req.query.uname
+	const upwd=req.query.upwd
 	//const upwd=req.body.upwd
 	//console.log(upwd)
-	const n=`select upwd from w_user where uname=?` 
+	const n="select * from w_user where uname=?"
 	pool.query(n,uname,(err,result)=>{
 		if(err){
 			throw err
 			return
-		}	
-
-		result==upwd ? res.send({code:200,msg:`登录成功!欢迎${uname}`}) : res.send({code:201,msg:"登录失败!"})
+		}
+		result.upwd==upwd ? res.send({code:200,msg:`登录成功!欢迎${uname}`}) : res.send({code:201,msg:"登录失败!"})
 	})
 })

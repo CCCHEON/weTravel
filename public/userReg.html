@@ -19,8 +19,11 @@
 			}
 			h2{text-align: center;}
 			ul{
-				
+				list-style: none;
+				display: block;
+				margin: 0 auto;
 			}
+			li span{color: red;}
 		</style>
 	</head>
 	<body>
@@ -40,7 +43,7 @@
 							密码<input type="password" id="in2"><span id="msg2"></span>
 						</li>
 						<li>
-							确认密码<input type="password" id="in3"><span id="msg2"></span>
+							确认密码<input type="password" id="in3"><span id="msg3"></span>
 						</li>
 						<li>
 							<input type="button" value="注册" id="btn">
@@ -54,18 +57,43 @@
 			</div>
 		</div>
 		<script>
+			//判断用户名是否可用
 			in1.onblur=function(){
-				var uname=in1.value
+				uname=in1.value
 				const xhr=new XMLHttpRequest()
 				xhr.open("GET","/v1/user/select?uname="+uname)
 				xhr.onload=function(){
-					var result=xhr.responseText
-					result.code==200 ? msg1.innerHTML="用户名已被占用" : msg1.innerHTML="用户名可用"
+					var r=JSON.parse(xhr.responseText)
+					console.log(r)
+					if(!in1.value){
+						msg1.innerHTML="用户名不能为空!"
+					}else{
+					r.msg=="用户名已经存在"? msg1.innerHTML="用户名已被占用!" : msg1.innerHTML="用户名可用!"						
+					}
 				}
 				xhr.send()
 			}
+			//验证两次输入密码是否相同
+			in3.onblur=function(){
+				upwd=in2.value
+				upwd2=in3.value
+				upwd!==upwd2 ? msg3.innerHTML="请保持密码一致" : msg3.innerHTML=null
+			}
 			btn.onclick=function(){
-				
+				upwd=in2.value
+				var data=`uname=${uname}&upwd=${upwd}`
+				const xhr=new XMLHttpRequest()
+				xhr.open("POST","/v1/user/reg")
+				xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded;charset=UTF-8')
+				xhr.onload=function(){
+					var r=JSON.parse(xhr.responseText)
+					console.log(r)
+					if(r.msg=="插入成功"){
+						alert("注册成功!")
+						window.location.href="http://127.0.0.1:3000/homePage.html"	
+					}
+				}
+				xhr.send(data)
 			}
 		</script>
 	</body>
