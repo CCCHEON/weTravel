@@ -30,18 +30,31 @@ router.get("/select",(req,res)=>{
 	})
 })
 
-//用户登录 查询数据  //接口测试不
-router.get("/log",(req,res)=>{
-	const uname=req.query.uname
-	const upwd=req.query.upwd
+//用户登录 查询用户名和密码对应的数据 //接口测试通过
+router.post("/log",(req,res)=>{
+	const uname=req.body.uname
+	const upwd=req.body.upwd
 	//const upwd=req.body.upwd
 	//console.log(upwd)
-	const n="select * from w_user where uname=?"
-	pool.query(n,uname,(err,result)=>{
+	const n="select * from w_user where uname=? and upwd=?"
+	pool.query(n,[uname,upwd],(err,result)=>{
 		if(err){
 			throw err
 			return
 		}
-		result.upwd==upwd ? res.send({code:200,msg:`登录成功!欢迎${uname}`}) : res.send({code:201,msg:"登录失败!"})
+		result.length>0 ? res.send({code:200,msg:`登录成功!欢迎${uname}`}) : res.send({code:201,msg:"登录失败!"})
+	})
+})
+
+//修改用户信息
+router.put("/update",(req,res)=>{
+	const m=req.body
+	const n="update w_user set ? where uid=?"
+	pool.query(n,m,(err,result)=>{
+		if(err){
+			throw err
+			return
+		}
+		result.affectedRows>0 ? res.send({code:200,msg:"修改成功"}) : res.send({code:201,msg:"修改失败"})
 	})
 })

@@ -18,18 +18,45 @@
 				<div class="logCenter">
 					<ul>
 						<li>
-							<span>用户名</span><input type="text">
+							<h4>用户名</h4>
+							<input type="text" id="uname">
+							<span id="msg1"></span>
 						</li>
 						<li>
-							<span>用户密码</span><input type="password">
+							<h4>用户密码</h4>
+							<input type="password" id="upwd">
+							<span id="msg2"></span>
 						</li>
 						<li>
-							<button>登录</button>
+							<button id="btn">登录</button>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<script>
+			//用户名输入非空判断
+			uname.onblur=function(){
+				!uname.value ? msg1.innerHTML="用户名不能为空!" : msg1.innerHTML=null
+			}
+			//btn添加AJAX事件 登录成功跳转到首页
+			btn.onclick=function(){
+				var uname=uname.value
+				var upwd=upwd.value
+				var data=`uname=${uname}&upwd=${upwd}`
+				let xhr=new XMLHttpRequest()
+				xhr.open("POST","/v1/user/log")
+				xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded;charset=UTF-8')
+				xhr.onload=function(){
+					var result=JSON.parse(xhr.responsetext)
+					if(result.code==200){
+						alert("登录成功!")
+						window.location.href="http://127.0.0.1:3000/homePage.html"	
+					}
+				}
+				xhr.send(data)
+			}
+		</script>
 	</body>
 </html>
 	
