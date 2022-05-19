@@ -4,56 +4,78 @@
 		<meta charset="utf-8">
 		<title></title>
 		<style type="text/css">
-			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{list-style: none;}
+			a{text-decoration: none;}
+			.center{
+				width: 1000px;
+				margin: 0 auto;
+			}
+			.headr{background-color: #fff;}
 		</style>
 	</head>
-	<body>	
-		<div class="pageBody">
-			
-			<div class="header" style="height:30px;width:100%">
-				<div class="center1" style="width:1226px;height:47px;margin:0 auto;background-color:#a2f2f2">
-					<div class="box1" style="float:left;height:20px;width:200px;vertical-align:middle;">
-						<a href="#">
-							<img src="https://cc.maotuying.com/img2/langs/zh_CN/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" style="width:300px;float:left">
-						</a>
-					</div>
-		
-					<div class="box2" style="float:right;text-align:center;">
-						<button>注册</button>
-						<button>登录</button>
-					</div>
-				</div>
-			</div>	
-			
-			<div class="classify" style="height:15px;width:1226px;margin:0 auto;">
-				<div class="center2">
-					<button type="button"></button>
-					<button type="button"></button>
-					<button type="button"></button>
-					<button type="button"></button>
-				</div>
-			</div>	
-			
-			<div class="search" style="height:348px;width:1226px;margin:0 auto;background:url(https://ccm.maotuying.com/cms/img/banner/homefeb2022_dt.png);">
-				<!-- 搜索框超链接跳转 -->
-				<div class="center3">
-					
+	<body>
+		<!-- 顶部导航 -->
+		<div class="header">
+			<div class="center">
+				<img src="" alt="">
+				<div class="user">
+					<button><a href="http://127.0.0.1:3000/userLogin.html">登录</a></button>
+					<button><a href="http://127.0.0.1:3000/userReg.html">注册</a></button>
 				</div>
 			</div>
-			
-			<div class="spot" style="height:500px;width:1226px;margin:0 auto;background-color:#ff2">
-				<!-- 景点推荐 -->
-				<div class="center3">
-					
+		</div>
+		<!-- 中间分类栏 -->
+		<div class="banner">
+			<div class="center">
+				<ul class="classify">
+					<li><button>体验杂谈</button></li>
+					<li><button>旅行者精选</button></li>
+					<li><button>小众探索</button></li>
+					<li><button>更多</button></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 搜索框 -->
+		<div class="search">
+			<div class="center">
+				<input type="text" placeholder="想去哪里?">
+				<img src="" alt="">
+			</div>
+		</div>
+		<!-- 主体部分 -->
+		<div class="mainbody">
+			<div class="spot">
+				<div class="center">
+					<div>景点图片</div>
+					<ul>
+						<li>热度景点</li>
+						<li>热度景点2</li>
+						<li>热度景点3</li>
+						<li>热度景点4</li>
+					</ul>
 				</div>
 			</div>
-			
-			<div class="forum" style="height:500px;width:1226px;margin:0 auto;background-color:#a2f2f2">
-				<!-- 论坛 -->
-				<div class="center4">
-					
+			<div class="forum">
+				<div class="center">
+					<div>论坛图片</div>
+					<ul>
+						<li>论坛圈子1</li>
+						<li>论坛圈子2</li>
+						<li>论坛圈子3</li>
+						<li>论坛圈子4</li>
+					</ul>
 				</div>
-			</div>			
-		</div>	
+			</div>
+		</div>
+		<!-- 页脚 -->
+		<div class="footer">
+			<div class="center">
+				<div>页脚</div>
+			</div>
+		</div>
 	</body>
 </html>

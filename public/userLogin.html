@@ -4,26 +4,50 @@
 		<meta charset="utf-8">
 		<title></title>
 		<style>
-			
+			.pageBody{
+				width: 100%;
+				height: 100%;
+				background-color: #004f32;
+			}
+			ul{list-style: none;}
+			.banner{
+				display: block;
+				margin: 20px 0;
+			}
+			h2{text-align: center;}
+			.center{
+				width: 800px;
+				margin: 0 auto;
+			}
+			.log button{
+				width: 80px;
+				height: 30px;
+				margin: 40px 0;
+			}
+			.log input{
+				width: 200px;
+				height: 30px;
+			}
+			li span{color: red;}
 		</style>
 	</head>
 	<body>
 		<div class="pageBody">
 			<div class="banner">
-				<div class="bannerCenter">
-					<h3>用户登录</h3>
+				<div class="center">
+					<h2>用户登录</h2>
 				</div>
 			</div>
 			<div class="log">
-				<div class="logCenter">
+				<div class="center">
 					<ul>
 						<li>
-							<h4>用户名</h4>
+							<h3>用户名</h3>
 							<input type="text" id="uname">
 							<span id="msg1"></span>
 						</li>
 						<li>
-							<h4>用户密码</h4>
+							<h3>用户密码</h3>
 							<input type="password" id="upwd">
 							<span id="msg2"></span>
 						</li>
@@ -39,16 +63,19 @@
 			uname.onblur=function(){
 				!uname.value ? msg1.innerHTML="用户名不能为空!" : msg1.innerHTML=null
 			}
+			upwd.onblur=function(){
+				!upwd.value ? msg2.innerHTML="用户密码不能为空!" : msg2.innerHTML=null
+			}
 			//btn添加AJAX事件 登录成功跳转到首页
 			btn.onclick=function(){
-				var uname=uname.value
-				var upwd=upwd.value
-				var data=`uname=${uname}&upwd=${upwd}`
+				uname=uname.value
+				upwd=upwd.value
+				data=`uname=${uname}&upwd=${upwd}`
 				let xhr=new XMLHttpRequest()
 				xhr.open("POST","/v1/user/log")
 				xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded;charset=UTF-8')
 				xhr.onload=function(){
-					var result=JSON.parse(xhr.responsetext)
+					var result=JSON.parse(xhr.responseText)
 					if(result.code==200){
 						alert("登录成功!")
 						window.location.href="http://127.0.0.1:3000/homePage.html"	
