@@ -9,19 +9,77 @@
 				padding: 0;
 			}
 			ul{list-style: none;}
-			a{text-decoration: none;}
+			a{
+				text-decoration: none;
+				color: #fff;
+			}
 			.center{
 				width: 1000px;
 				margin: 0 auto;
 			}
-			.headr{background-color: #fff;}
+			/* header */
+			.headr{
+				background-color: #fff;
+			}
+			.header .center{
+				display: flex;
+				height: 60px;
+				position: relative;
+			}
+			.header img{margin: 5px 10px;}
+			.header .user{
+				position: absolute;
+				right:5px;
+				top: 10px;
+			}
+			.header button{
+				width: 50px;
+				line-height: 30px;
+				background-color: #004f32;
+				border: 0;
+				border-radius: 10px;
+				margin-left: 10px;
+			}
+			/* banner */
+			.banner .center{
+				line-height: 80px;
+				background: linear-gradient(#48665b,hsl(156, 82%, 7%));
+			}
+			.banner .classify{
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: space-evenly;
+			}
+			.banner button{
+				width: 200px;
+				line-height: 30px;
+				color: #004f32;
+				font-size: 20px;
+				font-weight: 200;
+				border: 0;
+				border-radius: 15px;
+			}
+			/* search */
+			.search .center{
+				height: 200px;
+				background-image: url(./background.jpg);
+				background-size: contain;
+				margin-top: 10px;
+				overflow: hidden;
+			}
+			.search input{
+				width: 50%;
+				height: 50px;
+				display: block;
+				margin: 75px auto;
+			}
 		</style>
 	</head>
 	<body>
 		<!-- 顶部导航 -->
 		<div class="header">
 			<div class="center">
-				<img src="" alt="">
+				<img src="./logo.png">
 				<div class="user">
 					<button><a href="http://127.0.0.1:3000/userLogin.html">登录</a></button>
 					<button><a href="http://127.0.0.1:3000/userReg.html">注册</a></button>
