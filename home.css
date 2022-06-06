@@ -8,7 +8,6 @@ a{
   color: #fff;
 }
 .center{
-  width: 1000px;
   margin: 0 auto;
 }
 /* header */
@@ -27,7 +26,7 @@ a{
 }
 .header span{line-height: 45px;}
 /* banner */
-.banner .center{
+.banner .container{
   line-height: 80px;
   background: linear-gradient(#48665b,hsl(156, 82%, 7%));
   box-shadow: 2px 2px 2px hsl(156, 82%, 7%);
