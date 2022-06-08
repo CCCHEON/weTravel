@@ -7,9 +7,7 @@ a{
   text-decoration: none;
   color: #fff;
 }
-.center{
-  margin: 0 auto;
-}
+.center{margin: 0 auto;}
 /* header */
 .headr{
   background-color: #fff;
@@ -22,9 +20,11 @@ a{
 .header img{
   margin: 5px 10px;
   width: 40px;
-  border-radius: 30px;
+  border-radius: 45%;
 }
 .header span{line-height: 45px;}
+.header .btn{margin-top: 5px;}
+.header .btn:hover{transition: 1s;}
 /* banner */
 .banner .container{
   line-height: 80px;
@@ -38,12 +38,17 @@ a{
 }
 .banner button{
   width: 200px;
-  line-height: 30px;
+  line-height: 40px;
   color: #004f32;
   font-size: 20px;
   font-weight: 200;
   border: 0;
   border-radius: 15px;
+}
+.banner button:hover{
+  background: linear-gradient(#48665b,hsl(156, 82%, 7%));
+  color:#fff;
+  transition: 2s;
 }
 /* search */
 .search .container{
@@ -52,6 +57,27 @@ a{
   margin-top: 20px;
   overflow: hidden;
 }
-.search .container form{
-  margin-top: 10vw;
+.search .container form{margin-top: 10vw;}
+/* command */
+.roll{overflow:hidden}
+.roll ul{
+  display: flex; 
+  width: 200%;
+  animation: move 30s infinite linear;
+}
+.roll ul:hover{animation-play-state: paused;}
+.roll ul li{width: 12.5%;}
+.roll ul li img{
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+.roll ul li p{
+  text-align: center;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+@keyframes move{
+  0% {}
+  100%{transform: translateX(-50%)}
 }
